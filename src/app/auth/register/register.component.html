@@ -65,17 +65,21 @@
               <legend class="text-center">S'enregistrer</legend>
               <form>
                 <div class="mb-3">
-                  
                   <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre Nom" required>
                 </div>
                 <div class="mb-3">
                   <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre Prénom" required>
                 </div>
                 <div class="mb-3">
+                <select  class="form-control" name="role" id="role" data-msg="Please choose a gender"  required>
+                  <option value="masculin">admin</option>
+                  <option value="feminin">étudiant</option>
+                </select>
+              </div>
+                <div class="mb-3">
                   <input type="text" class="form-control" id="email" name="email" placeholder="Entrez votre adresse mail" required>
                 </div>
                 <div class="mb-3">
-                 
                   <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe" required>
                 </div>
                 
