@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
  loginForm:FormGroup;
- apiUrl = 'http://127.0.0.1:8000/api/login'; // URL de l'API
 
 constructor(
     private fb: FormBuilder, 
@@ -25,34 +24,40 @@ constructor(
     });
   }
 
-  getRole(loginData: { username: string; password: string }): string {
-    // Remplacez cette logique par un appel API réel pour obtenir les informations utilisateur
-    if (loginData.username === 'professeur') {
-      return 'prof';
-    } else if (loginData.username === 'etudiant') {
-      return 'etudiant';
-    }
-    return 'unknown'; // Valeur par défaut si le rôle est introuvable
-  }
+  
 
 
-  SubmitLogin() {
-    if (this.loginForm.valid) {
+  
+    SubmitLogin() {
+      if (this.loginForm.valid) {
         console.log('Données du formulaire de connexion :', this.loginForm.value);
-        const loginData = this.loginForm.value; // Récupère les données du formulaire
-        const userRole = this.getRole(loginData);
         
-      // Redirection basée sur le rôle
-      if (userRole === 'prof') {
-        this.router.navigate(['/addcours']); // Redirige vers "addcours" pour les profs
-      } else if (userRole === 'etudiant') {
-        this.router.navigate(['/courslistadmin']); // Redirige vers "courslistadmin" pour les étudiants
+        this.apiService.login(this.loginForm.value).subscribe({
+          next: (response) => {
+            // Stocker les informations de l'utilisateur et le token
+            localStorage.setItem('user', JSON.stringify(response.user));
+            localStorage.setItem('token', response.token);
+            
+            // Vérifier le rôle de l'utilisateur
+            const userRole = response.user.role;
+            
+            // Redirection basée sur le rôle
+            if (userRole === 'prof') {
+              this.router.navigate(['/addcours']);
+            } else if (userRole === 'etudiant') {
+              this.router.navigate(['/courslistadmin']);
+            } else {
+              alert('Rôle non reconnu');
+            }
+          },
+          error: (error) => {
+            console.error('Erreur de connexion', error);
+            alert('Identifiants incorrects');
+          }
+        });
       } else {
-        alert('Rôle non reconnu'); // Gestion des rôles inconnus
+        alert('Formulaire invalide');
       }
-    } else {
-       alert('Formulaire invalide');
-        }
-  }
+    }
 
 }
