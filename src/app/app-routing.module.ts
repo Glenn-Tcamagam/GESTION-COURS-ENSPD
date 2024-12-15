@@ -8,7 +8,7 @@ import { AddPostComponent } from './posts/add-post/add-post.component';
 import { CoursListComponent } from './cours/cours-list/cours-list.component';
 
 const routes: Routes = [
-  {path:'', component: AccueilComponent },
+{path:'', component: AccueilComponent },
 {path:'login', component: LoginComponent },
 {path:'register', component: RegisterComponent},
 
@@ -21,7 +21,6 @@ const routes: Routes = [
 
 //POST
 {path:'addpost', component: AddPostComponent},
-
 { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
