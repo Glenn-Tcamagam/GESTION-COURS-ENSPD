@@ -63,32 +63,33 @@
             <!-- Formulaire -->
             <fieldset>
               <legend class="text-center">S'enregistrer</legend>
-              <form>
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre Nom" required>
+                  <input type="text" class="form-control" formControlName="nom" id="nom" name="nom" placeholder="Entrez votre Nom" required>
                 </div>
                 <div class="mb-3">
-                  <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre Prénom" required>
+                  <input type="text" class="form-control" id="prenom"  formControlName="prenom"  name="prenom" placeholder="Entrez votre Prénom" required>
                 </div>
                 <div class="mb-3">
-                <select  class="form-control" name="role" id="role" data-msg="Please choose a gender"  required>
-                  <option value="masculin">admin</option>
-                  <option value="feminin">étudiant</option>
+                <select  class="form-control" name="role"  formControlName="role"  id="role" data-msg="Please choose a gender"  required>
+                  <option value="admin">admin</option>
+                  <option value="etudiant">étudiant</option>
+                  <option value="professeur">professeur</option>
                 </select>
-              </div>
-                <div class="mb-3">
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Entrez votre adresse mail" required>
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+                  <input type="text" class="form-control"  formControlName="email"  id="email" name="email" placeholder="Entrez votre adresse mail" required>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" id="password"  formControlName="password"  name="password" placeholder="Entrez votre mot de passe" required>
                 </div>
                 
                 <div class="mb-3">
                  
-                  <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Entrez votre mot de passe" required>
+                  <input type="password" class="form-control" id="confirmpassword" formControlName="confirmpassword"  name="confirmpassword" placeholder="Entrez votre mot de passe" required>
                 </div>
                
-                <button type="submit" class="btn login-button w-100">Se Connecter</button>
+                <button type="submit" class="btn login-button w-100" >Se Connecter</button>
                 <div class="mb3">
                   <p>avez vous deja un compte ?
                     <a style="color: #2E3192;" [routerLink]="['/login']">   
