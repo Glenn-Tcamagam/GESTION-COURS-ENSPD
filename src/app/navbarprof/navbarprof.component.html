@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand ms-3" href="#"><img src="assets/images/logo  Learn Hub ENSPD.png" width="30" height="30" class="d-inline-block align-top" alt="">LEARN HUB ENSPD</a>
+    
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active me-3">
+          <a class="nav-link" [routerLink]="['/accueilprof']">Accueil</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" [routerLink]="['/courslistadmin']">Mes cours</a>
+        </li>
+        <li class="nav-item me-3">
+            <a class="nav-link" [routerLink]="['/postlistadmin']">Mes posts</a>
+          </li>
+        <li class="nav-item me-3">
+          <a class="nav-link" href="#">QCM</a>
+        </li>
+        <!-- <li class="nav-item me-3">
+          <a class="nav-link " href="#">Notification</a>
+        </li> -->
+        <li class="nav-item me-3">
+            <a class="nav-link " href="#">Paramètre</a>
+          </li>
+         
+      </ul>
+     
+    </div>
+   
+    <button class="btn btn-danger me-3 "routerLink="/login"> Déconnexion</button>
+  </nav>

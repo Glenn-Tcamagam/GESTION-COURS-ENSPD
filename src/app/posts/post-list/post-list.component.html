@@ -1,0 +1,48 @@
+<app-navbarprof></app-navbarprof>
+<br><br>
+
+<div class="container">
+
+    <h1 class="mt-3">LISTE DES POSTS</h1>
+  
+    <div class="d-flex justify-content-end mt-3">
+      <a [routerLink]="['/addpost']" class="btn btn-primary">Créer un post</a>
+    </div>
+  
+  
+    <ng-container *ngIf="posts$ | async as Posts">
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th> Description</th>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Cours</th>
+            <!-- <th> </th> -->
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr *ngFor="let post of Posts">
+            <td>{{post.titre}}</td>
+            <td>{{post.description}}</td>
+            <td>{{post.auteur}}</td>
+            <td>{{post.date}}</td>
+            <td>
+              <span *ngFor="let cour of post.cours">
+                <span class="badge bg-success me-2">{{cour.name}}</span>
+              </span>
+            </td>
+            <td>
+              <a class="btn btn-warning" [routerLink]="['/edit', post.id]">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+  
+    </ng-container>
+  
+  </div>
+
