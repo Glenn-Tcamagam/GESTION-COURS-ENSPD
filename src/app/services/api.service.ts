@@ -29,4 +29,8 @@ export class ApiService {
     };
     return this.http.post(`${this.apiUrl}/login`,mappedData);
   }
+
+  addCours(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/cours`, data);
+  }
 }

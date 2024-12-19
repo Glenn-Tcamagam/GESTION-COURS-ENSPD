@@ -3,18 +3,22 @@
       <div class="col-12 col-md-6 col-lg-4 mx-auto">
         <h1>CREER UN COURS</h1>
  
-        <form  #form="ngForm"  (ngSubmit)="onFormSubmit()">
+        <form  [formGroup]="coursForm"   (ngSubmit)="onFormSubmit()">
           <div class="mt-3">
             <label for="name" class="form-label" >Nom de cours</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name"
+            <input type="text" class="form-control" id="name" name="name" formControlName="name"
            >
           </div>
   
           <div class="mt-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="model.description"
+            <input type="text" class="form-control" id="description"  name="description"  formControlName="description"
             >
           </div>
+          <div class="mt-3">
+            <input  type="date" class="form-control" id="date" name="date" >
+          </div>
+          <input type="hidden" formControlName="professeur_id">
   
           <div class="mt-3">
             <button type="submit" class="btn btn-primary">S'enregistrer                                       </button>

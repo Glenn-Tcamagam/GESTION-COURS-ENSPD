@@ -40,12 +40,13 @@ constructor(
             
             // Vérifier le rôle de l'utilisateur
             const userRole = response.user.role;
+            const userId = response.user.id;
             
             // Redirection basée sur le rôle
-            if (userRole === 'prof') {
-              this.router.navigate(['/addcours']);
+            if (userRole === 'professeur') {
+              this.router.navigate(['/addcours'],{ queryParams: { id: userId } });
             } else if (userRole === 'etudiant') {
-              this.router.navigate(['/courslistadmin']);
+              this.router.navigate(['/courslistadmin'], { queryParams: { id: userId } });
             } else {
               alert('Rôle non reconnu');
             }
